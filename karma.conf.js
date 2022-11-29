@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-junit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -33,16 +34,20 @@ module.exports = function (config) {
         { type: 'lcov' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'junit'],
+    junitReporter: {
+      outputDir: require('path').join(__dirname, './coverage/frontend'),
+      outputFile: 'junit-report.xml'
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     customLaunchers: {
-      chrome_no_sandbox: {
+      chrome_cicd: {
         base: 'Chrome',
-        flags: ['--no-sandbox'] // for running within Docker
+        flags: ['--headless', '--disable-gpu', '--no-sandbox', '--remote-debugging-port=9222'] // for running within Docker
       }
     },
     singleRun: false,
