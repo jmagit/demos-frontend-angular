@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage",
+    "ci-test": "ng test --code-coverage --browsers chrome_no_sandbox --watch false",
     "sonar": "sonar-scanner.bat -D\"sonar.projectKey=demo-angular\" -D\"sonar.sources=./src\" -D\"sonar.test.inclusions=**/*.spec.ts\" -D\"sonar.javascript.lcov.reportPaths=./coverage/frontend/lcov.info\" -D\"sonar.host.url=http://localhost:9000\" -D\"sonar.login=sqp_e10998f4c545dc9de381455f260d8b91faa4bffa\""
   },
   "private": true,

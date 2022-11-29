@@ -39,6 +39,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      chrome_no_sandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox'] // for running within Docker
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
