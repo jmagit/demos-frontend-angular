@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { LoggerService } from 'src/lib/my-core';
+import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core';
 import { NavigationService } from './navigation.service';
 
 describe('NavigationService', () => {
@@ -8,7 +8,7 @@ describe('NavigationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ LoggerService ],
+      providers: [ LoggerService, { provide: ERROR_LEVEL, useValue: 0 } ],
     });
     service = TestBed.inject(NavigationService);
     log = TestBed.inject(LoggerService);

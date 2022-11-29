@@ -2,8 +2,7 @@
 FROM node:lts-alpine AS build
 WORKDIR /usr/src/app
 COPY . .
-RUN npm install
-RUN npm run build
+RUN npm ci && npm run build
 
 
 ### STAGE 2: Deploy ###
@@ -13,5 +12,5 @@ COPY ./nginx.default.conf /etc/nginx/conf.d/default.conf
 #EXPOSE 80
 #CMD ["nginx", "-g", "daemon off;"]
 
-# docker build -t angular-server .
-# docker run -d --name angular-server -p 4200:80 --network microservicios angular-server
+# docker build -t demo-frontend-angular .
+# docker run -d --name demo-frontend-angular -p 4200:80 --network microservicios demo-frontend-angular

@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { LoggerService } from 'src/lib/my-core';
+import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core';
 import { NotificationService, NotificationType } from '../common-services';
 
 import { CalculadoraComponent } from './calculadora.component';
@@ -12,7 +12,7 @@ describe('Pruebas aisladas de la calculadora', () => {
   let notify: NotificationService;
 
 	beforeAll(() => {
-    log = new LoggerService()
+    log = new LoggerService(0)
     notify = new NotificationService(log)
 		calc = new CalculadoraComponent(log, notify)
 	});
@@ -225,7 +225,7 @@ describe('CalculadoraComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CalculadoraComponent ],
-      providers: [ NotificationService, LoggerService ],
+      providers: [ NotificationService, LoggerService, { provide: ERROR_LEVEL, useValue: 0 } ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
