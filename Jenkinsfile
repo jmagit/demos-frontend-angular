@@ -17,11 +17,6 @@ pipeline {
                 sh 'npm --version'
                 sh "npm install"
             }
-            post {
-              always {
-                  junit 'coverage/frontend/**/*.xml'
-              }
-            }
         }
         stage('Unit tests') {
             steps {
