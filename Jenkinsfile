@@ -28,7 +28,7 @@ pipeline {
       }
     }
     stage("SonarQube Analysis") {
-        agent none
+        agent any
         environment {
             // Previously defined in the Jenkins "Global Tool Configuration"
             scannerHome = tool 'SonarQube Scanner'
