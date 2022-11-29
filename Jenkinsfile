@@ -38,7 +38,7 @@ pipeline {
                 withSonarQubeEnv('SonarQubeDockerServer') {
                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=demo-angular \
                     	-Dsonar.sources=./src \
-                      -Dsonar.sourceEncoding=UTF-8
+                      -Dsonar.sourceEncoding=UTF-8 \
                     	-Dsonar.tests=./spec \
                       -Dsonar.test.inclusions=**/*.spec.ts \
                     	-Dsonar.javascript.lcov.reportPaths=./coverage/frontend/lcov.info \
