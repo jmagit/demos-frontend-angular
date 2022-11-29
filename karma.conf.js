@@ -37,7 +37,8 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml', 'junit'],
     junitReporter: {
       outputDir: require('path').join(__dirname, './coverage/frontend'),
-      outputFile: 'junit-report.xml'
+      outputFile: 'junit-report.xml',
+      useBrowserName: false
     },
     port: 9876,
     colors: true,
